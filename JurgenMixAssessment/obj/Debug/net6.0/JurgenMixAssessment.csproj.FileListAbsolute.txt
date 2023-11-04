@@ -1,0 +1,14 @@
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\bin\Debug\net6.0\JurgenMixAssessment.exe
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\bin\Debug\net6.0\JurgenMixAssessment.deps.json
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\bin\Debug\net6.0\JurgenMixAssessment.runtimeconfig.json
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\bin\Debug\net6.0\JurgenMixAssessment.dll
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\bin\Debug\net6.0\JurgenMixAssessment.pdb
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\obj\Debug\net6.0\JurgenMixAssessment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\obj\Debug\net6.0\JurgenMixAssessment.AssemblyInfoInputs.cache
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\obj\Debug\net6.0\JurgenMixAssessment.AssemblyInfo.cs
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\obj\Debug\net6.0\JurgenMixAssessment.csproj.CoreCompileInputs.cache
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\obj\Debug\net6.0\JurgenMixAssessment.dll
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\obj\Debug\net6.0\refint\JurgenMixAssessment.dll
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\obj\Debug\net6.0\JurgenMixAssessment.pdb
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\obj\Debug\net6.0\JurgenMixAssessment.genruntimeconfig.cache
+C:\Work\JurgenMixAssessment\JurgenMixAssessment\obj\Debug\net6.0\ref\JurgenMixAssessment.dll
