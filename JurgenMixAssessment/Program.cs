@@ -10,7 +10,7 @@ class Program
         stopwatch.Start();
         Console.WriteLine($"Starting data extraction.");
 
-        var spatialHash = new GridSpatialHash(0.01);
+        var spatialHash = new GridSpatialHash(0.1);
         spatialHash.LoadVehiclesFromBinaryFile("..\\VehiclePositions_DataFile\\VehiclePositions.dat");
 
         stopwatch.Stop();
@@ -38,7 +38,7 @@ class Program
         }
 
         stopwatch.Stop();
-        Console.WriteLine($"\nSearch execution time: {stopwatch.Elapsed}");
-        //Console.WriteLine($"{spatialHash.GetCalculationCount()} Calculations performed.");
+        Console.WriteLine($"\nSearch execution time: {stopwatch.Elapsed}");     
+        Console.ReadLine();
     }
 }

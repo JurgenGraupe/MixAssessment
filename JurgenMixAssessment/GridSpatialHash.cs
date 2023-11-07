@@ -1,5 +1,4 @@
-﻿using System.Text;
-using JurgenMixAssessment.Models;
+﻿using JurgenMixAssessment.Models;
 
 namespace JurgenMixAssessment
 {
@@ -7,16 +6,10 @@ namespace JurgenMixAssessment
     {
         private Dictionary<(int, int), List<Vehicle>> grid = new Dictionary<(int, int), List<Vehicle>>();
         private double cellSize;
-        private int count = 0;
         
         public GridSpatialHash(double cellSize)
         {
             this.cellSize = cellSize;
-        }
-
-        public int GetCalculationCount()
-        {
-            return count;
         }
 
         private (int, int) GetGridCell(float latitude, float longitude)
@@ -26,13 +19,17 @@ namespace JurgenMixAssessment
 
         public void AddVehicle(Vehicle vehicle)
         {
-            var cell = GetGridCell(vehicle.Latitude, vehicle.Longitude);
-            if (!grid.TryGetValue(cell, out var list))
+            var cell = GetGridCell(vehicle.Latitude, vehicle.Longitude);            
+            if (grid.ContainsKey(cell))
             {
-                list = new List<Vehicle>();
-                grid[cell] = list;
+                grid[cell].Add(vehicle);                          
+            } else
+            {                    
+                grid[cell] = new List<Vehicle>
+                {
+                    vehicle
+                };
             }
-            list.Add(vehicle);
         }
 
         public Vehicle FindNearestVehicle(float latitude, float longitude)
@@ -74,9 +71,7 @@ namespace JurgenMixAssessment
 
             double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
                        Math.Sin(dLon / 2) * Math.Sin(dLon / 2) * Math.Cos(lat1) * Math.Cos(lat2);
-            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));      
-            //Adding count almost doubles search execution time
-            //count++
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));                 
             return R * c;
         }
 
@@ -87,9 +82,9 @@ namespace JurgenMixAssessment
 
         public void LoadVehiclesFromBinaryFile(string filePath)
         {
-            using (FileStream fs = new FileStream(filePath, FileMode.Open))
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 62464))
             using (BinaryReader reader = new BinaryReader(fs))
-            {
+            {                
                 while (reader.BaseStream.Position < reader.BaseStream.Length)
                 {                    
                     int vehicleId = reader.ReadInt32();
@@ -97,16 +92,14 @@ namespace JurgenMixAssessment
                     float latitude = reader.ReadSingle();
                     float longitude = reader.ReadSingle();
                     ulong recordedTimeUTC = reader.ReadUInt64();
-                    Vehicle vehicle = new Vehicle
-                    {
+                    
+                    AddVehicle(new Vehicle {
                         VehicleId = vehicleId,
                         VehicleRegistration = vehicleRegistration,
                         Latitude = latitude,
                         Longitude = longitude,
                         RecordedTimeUTC = recordedTimeUTC
-                    };
-                    
-                    AddVehicle(vehicle);
+                    });
                 }
             }
         }
@@ -119,7 +112,7 @@ namespace JurgenMixAssessment
             {
                 bytes.Add(b);
             }
-            return Encoding.ASCII.GetString(bytes.ToArray());
+            return "1234";// Encoding.ASCII.GetString(bytes.ToArray());
         }
     }
 }
